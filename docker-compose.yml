@@ -13,6 +13,6 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - BACKEND_URL=http://backend:54.234.59.253
+      - BACKEND_URL=http://54.234.59.253
     depends_on:
       - backend
