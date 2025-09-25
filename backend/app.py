@@ -5,6 +5,13 @@ import datetime
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/api/', methods=['GET'])
+def api_root():
+    return jsonify({
+        'message': 'Bem-vindo à raiz da API!',
+        'status': 'success'
+    })
+    
 @app.route('/api/data', methods=['GET'])
 def get_data():
     return jsonify({
