@@ -1,31 +1,28 @@
-from flask import Flask, jsonify, request, render_template
-from flask_cors import CORS
-import datetime
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Frontend</title>
+</head>
+<body>
+    <h1>Bem-vindo ao meu site!</h1>
+    <p>Testando a conexão com o backend...</p>
+    <div id="backend-data"></div>
 
-app = Flask(__name__)
-CORS(app)
-
-@app.route('/')
-def home():
-    # Dicionário com os dados que o HTML usa
-    data = {
-        'message': 'Dados do backend funcionando!',
-        'status': 'success',
-        'timestamp': datetime.datetime.now().isoformat()
-    }
-    return render_template('index.html', data=data)
-
-@app.route('/api/data', methods=['GET'])
-def get_data():
-    return jsonify({
-        'message': 'Dados do backend funcionando!',
-        'timestamp': datetime.datetime.now().isoformat(),
-        'status': 'success'
-    })
-
-@app.route('/api/health', methods=['GET'])
-def health_check():
-    return jsonify({'status': 'healthy'})
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    <script>
+        // Pede os dados para a nossa API
+        fetch('/api/data')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('backend-data');
+                container.innerHTML = `<p>Mensagem do Backend: ${data.message}</p>
+                                     <p>Timestamp: ${data.timestamp}</p>`;
+            })
+            .catch(error => {
+                console.error('Erro ao buscar dados do backend:', error);
+                const container = document.getElementById('backend-data');
+                container.innerHTML = '<p style="color: red;">Falha ao conectar com o backend.</p>';
+            });
+    </script>
+</body>
+</html>
