@@ -1,2 +1,2 @@
-# Projeto
-Deploy de Aplicação Web com Docker em Serviços de Nuvem
+Graziely de Oliveira Severo - 10425431
+Marcos Antonio Minhano - 10428577
