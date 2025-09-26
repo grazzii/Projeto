@@ -12,7 +12,7 @@ services:
     container_name: frontend
     restart: always
     ports:
-      - "80:8080"
+      - "8080:80"
     environment:
       - BACKEND_URL=http://backend:25000
     depends_on:
