@@ -11,7 +11,7 @@ services:
     build: ./frontend
     container_name: frontend
     ports:
-      - "8080:8080"
+      - "8080:80"
     environment:
       - BACKEND_URL=http://backend:25000
     depends_on:
